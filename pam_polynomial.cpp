@@ -28,7 +28,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char *arg
     m_msg.msg_style=PAM_PROMPT_ECHO_OFF;
     //сообщение пользователю с аргументами многочлена
     QString message="x="+QString().setNum(x)+";"+"a="+QString().setNum(a)+";"+"b="+QString().setNum(b);
-    m_msg.msg=message.toLocal8Bit().constData();
+    m_msg.msg=message.toUtf8().constData();
     m_msgp=&m_msg;
 
 //запрос ответ пользователя
