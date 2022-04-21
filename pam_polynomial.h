@@ -8,8 +8,10 @@
 #include <security/pam_ext.h>
 // Стандартный заголовочный файл для генерации случайного числа
 #include <stdlib.h>
+#include <QTime>
 // Заловочный файл для работы строкового типа QT фреймворка
 #include <QString>
+
 // интерфейс Linux-PAM для организации аутентификацию
 int PAM_POLYNOMIAL_EXPORT pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char *argv[]);
 // интерфейс Linux-PAM для организациия авторизацию, то есть устанавление uid

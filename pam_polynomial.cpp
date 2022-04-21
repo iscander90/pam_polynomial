@@ -1,5 +1,6 @@
 #include "pam_polynomial.h"
 
+
 int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char *argv[])
 {
 //переменные
@@ -14,9 +15,11 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char *arg
     int retval;
 /*--переменные для формирование многочлена у=x*x+a*x+b --*/
     int y;
+    srand(QTime::currentTime().msec());
     int x = rand()%5;
     int a = rand()%10;
     int b = rand()%100;
+
     /*---количество попыток неправильного ответа значение многочлена ----*/
     int retry=3;
     /*--- переменный для хранение ответ пользователя ----*/
@@ -28,6 +31,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, const char *arg
     m_msg.msg_style=PAM_PROMPT_ECHO_OFF;
     //сообщение пользователю с аргументами многочлена
     QString message="x="+QString().setNum(x)+";"+"a="+QString().setNum(a)+";"+"b="+QString().setNum(b);
+
     m_msg.msg=message.toUtf8().constData();
     m_msgp=&m_msg;
 
@@ -50,6 +54,7 @@ for (int i=0;i<retry;i++)
 if (retval == PAM_CONV_ERR) return (retval);
 if (retval != PAM_SUCCESS) {return (PAM_AUTH_ERR);}
 y = x*x+a*x+b;
+
 //проверка
 if (y!=QString(user_answer).toInt())
 {
