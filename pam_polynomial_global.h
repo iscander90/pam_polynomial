@@ -1,0 +1,12 @@
+#ifndef PAM_POLYNOMIAL_GLOBAL_H
+#define PAM_POLYNOMIAL_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(PAM_POLYNOMIAL_LIBRARY)
+#  define PAM_POLYNOMIAL_EXPORT Q_DECL_EXPORT
+#else
+#  define PAM_POLYNOMIAL_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PAM_POLYNOMIAL_GLOBAL_H
